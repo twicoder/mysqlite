@@ -319,7 +319,6 @@ void db_close(Table* table) {
 	free(table);
 }
 
-
 void* get_page(Pager* pager, uint32_t page_num) {
 	if (page_num > TABLE_MAX_PAGES) {
 		printf("Tried to fetch page number out of bounds. %d > %d\n", page_num, TABLE_MAX_PAGES);
@@ -391,7 +390,6 @@ InputBuffer* new_input_buffer() {
 	input_buffer->buffer = NULL;
 	input_buffer->buffer_length = 0;
 	input_buffer->input_length = 0;
-
 	return input_buffer;
 }
 
@@ -399,7 +397,6 @@ void close_input_buffer(InputBuffer* input_buffer) {
 	free(input_buffer->buffer);
 	free(input_buffer);
 }
-
 
 MetaCommandResult do_meta_command(InputBuffer* input_buffer, Table* table) {
 	if (strcmp(input_buffer->buffer, ".exit") == 0) {
@@ -456,7 +453,6 @@ PrepareResult prepare_statement(InputBuffer* input_buffer, Statement* statement)
 		statement->type = STATEMENT_SELECT;
 		return PREPARE_SUCCESS;
 	}
-
 	return PREPARE_UNRECOGNIZED_STATEMENT;
 }
 
